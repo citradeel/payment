@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citra DEEL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('background.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            color: #5d5a4a;
+        }
+
+        /* ===== HEADER SECTION ===== */
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeDown 1s ease;
+        }
+
+        .header-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px; /* Ukuran lebih besar sebagai identitas utama */
+            font-weight: 700;
+            color: #4a5d4a; /* Hijau botani gelap */
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Garis halus di bawah nama untuk estetika */
+        .header-section h1::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 1px;
+            background: #b8b3a0;
+            margin: 8px auto 0;
+            opacity: 0.6;
+        }
+
+        /* ===== CARD STYLE ===== */
+        .box {
+            width: 100%;
+            max-width: 380px;
+            background: rgba(255, 255, 255, 0.45); /* Lebih transparan agar tekstur background terlihat */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .box:nth-child(2) { animation-delay: 0.2s; }
+        .box:nth-child(3) { animation-delay: 0.3s; }
+        .box:nth-child(4) { animation-delay: 0.4s; }
+        .box:nth-child(5) { animation-delay: 0.5s; }
+        .box:nth-child(6) { animation-delay: 0.6s; }
+        .box:nth-child(7) { animation-delay: 0.7s; }
+
+        .payment-logo {
+            height: 28px;
+            margin-bottom: 15px;
+            object-fit: contain;
+            opacity: 0.9;
+        }
+
+        .box h3 {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #8c8876; /* Warna cokelat abu pudar */
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .box p {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #4a5d4a;
+            letter-spacing: 0.5px;
+        }
+
+        /* Button "copy" */
+        button {
+            padding: 7px 24px;
+            border: 1px solid #a3ad91;
+            border-radius: 50px;
+            background: rgba(163, 173, 145, 0.1);
+            color: #4a5d4a;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: lowercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background: #7a8a7a;
+            border-color: #7a8a7a;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            background: #4a5d4a;
+            color: #fcfaf7;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.4s;
+            z-index: 100;
+            letter-spacing: 0.5px;
+        }
+
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+
+<body>
+
+<div class="header-section">
+    <h1>Citra Dwi Lestari</h1>
+</div>
+
+<div class="box">
+    <img src="bca.png" class="payment-logo" alt="BCA">
+    <h3>CITRA DWI LESTARI</h3>
+    <p id="bca">3760746320</p>
+    <button onclick="copyText('bca')">copy</button>
+</div>
+
+<div class="box">
+    <img src="bni.png" class="payment-logo" alt="BNI">
+    <h3>CITRA DWI LESTARI</h3>
+    <p id="bni">0282178082</p>
+    <button onclick="copyText('bni')">copy</button>
+</div>
+
+<div class="box">
+    <img src="bri.png" class="payment-logo" alt="BRI">
+    <h3>CITRA DWI LESTARI</h3>
+    <p id="bri">018601095839505</p>
+    <button onclick="copyText('bri')">copy</button>
+</div>
+
+<div class="box">
+    <img src="shopeepay.png" class="payment-logo" alt="ShopeePay">
+    <h3>CITRA DWI LESTARI</h3>
+    <p id="shopeepay">085722656800</p>
+    <button onclick="copyText('shopeepay')">copy</button>
+</div>
+
+<div class="box">
+    <img src="ovo.png" class="payment-logo" alt="OVO">
+    <h3>CITRA DWI LESTARI</h3>
+    <p id="ovo">085722656800</p>
+    <button onclick="copyText('ovo')">copy</button>
+</div>
+
+<div class="box">
+    <img src="gopay.png" class="payment-logo" alt="GOPAY">
+    <h3>CITRA DWI LESTARI</h3>
+    <p id="gopay">085722656800</p>
+    <button onclick="copyText('gopay')">copy</button>
+</div>
+
+<div id="toast" class="toast">nomor berhasil disalin</div>
+
+<script>
+function copyText(id) {
+    var text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        var toast = document.getElementById("toast");
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2000);
+    });
+}
+</script>
+
+</body>
+</html>
